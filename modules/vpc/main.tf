@@ -53,7 +53,7 @@ resource "aws_subnet" "private_subnet" {
     vpc_id = aws_vpc.vpc.id
     cidr_block = var.private_subnet_cidr
     availability_zone = data.aws_availability_zone.az[1]
-    tags = tags = merge(local.common_tags, {
+    tags = merge(local.common_tags, {
   Name = "${local.prefix}-pvt-rt"
 })
 
