@@ -1,0 +1,12 @@
+vpc_cidr = "192.168.0.0/16"
+public_subnet_cidr = "192.168.1.0/20"
+public_route_cidr = "0.0.0.0/0"
+sg_from_port = 22
+sg_to_port = 22
+sg_cidr = ["0.0.0.0/0"]
+sg_http_from = 80
+sg_http_to = 8080
+sg_http_cidr = ["0.0.0.0/0"]
+private_subnet_cidr = "192.168.2.0/20"
+instance_type_public="t3.small"
+it_type_private="t3.micro"
