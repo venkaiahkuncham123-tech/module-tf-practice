@@ -1,0 +1,10 @@
+vpc_cidr = "172.168.0.0/16"
+public_subnet_cidr = "172.168.1.0/20"
+public_route_cidr = "0.0.0.0/0"
+sg_from_port = 22
+sg_to_port = 22
+sg_cidr = ["0.0.0.0/0"]
+sg_http_from = 80
+sg_http_to = 8080
+sg_http_cidr = ["0.0.0.0/0"]
+private_subnet_cidr = "172.168.2.0/20"
