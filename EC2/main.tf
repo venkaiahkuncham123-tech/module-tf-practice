@@ -31,7 +31,7 @@ resource "aws_instance" "private_ec2" {
     instance_type = var.it_type_private
     key_name = aws_key_pair.key.key_name
     subnet_id = module.ec2_creation.private_subnet
-    vpc_security_group_ids = [module.ec_creation.private_sg_id]
+    vpc_security_group_ids = [module.ec2_creation.private_sg_id]
     tags {
         Name = "Private-Instance"
         Created_on = timestamp()
