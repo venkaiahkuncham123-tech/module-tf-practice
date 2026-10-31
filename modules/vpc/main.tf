@@ -6,7 +6,7 @@ locals {
   }
 }
 locals {
-        az = data.aws_availability_zone.az.name
+        az_name = data.aws_availability_zone.az.name
     }
 data "aws_availability_zone" "az" {
     state = "available"    
@@ -29,7 +29,7 @@ resource "aws_internet_gateway" "ig_name" {
 resource "aws_subnet" "public_subnet" {
     vpc_id = aws_vpc.vpc.id
     cidr_block = var.public_subnet_cidr  
-    availability_zone = local.az[0]
+    availability_zone = local.az_name[0]
     map_public_ip_on_launch = true
     tags = "${local.common_tags}-Public-Subnet"
 }
@@ -52,7 +52,7 @@ resource "aws_route_table_association" "rt_association" {
 resource "aws_subnet" "private_subnet" {
     vpc_id = aws_vpc.vpc.id
     cidr_block = var.private_subnet_cidr
-    availability_zone = data.aws_availability_zone.az[1]
+    availability_zone = local.az_name[1]
     tags = merge(local.common_tags, {
   Name = "${local.prefix}-pvt-rt"
 })
