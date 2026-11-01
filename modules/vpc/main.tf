@@ -6,7 +6,7 @@ locals {
   }
 }
 locals {
-        az_name = data.aws_availability_zone.az.names
+        az_name = data.aws_availability_zone.az.name
     }
 data "aws_availability_zone" "az" {
     state = "available"    
