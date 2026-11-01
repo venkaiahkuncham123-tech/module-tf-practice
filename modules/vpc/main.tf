@@ -6,7 +6,7 @@ locals {
   }
 }
 locals {
-        az_name = data.aws_availability_zone.az.name
+        az_name = data.aws_availability_zone.az.names
     }
 data "aws_availability_zone" "az" {
     state = "available"    
@@ -31,7 +31,9 @@ resource "aws_subnet" "public_subnet" {
     cidr_block = var.public_subnet_cidr  
     availability_zone = local.az_name[0]
     map_public_ip_on_launch = true
-    tags = "${local.common_tags}-Public-Subnet"
+    tags = merge(local.common_tags, {
+   Name = "${local.prefix}-subnet"
+})
 }
 resource "aws_route_table" "public_route_table" {
     vpc_id = aws_vpc.vpc.id
@@ -87,8 +89,8 @@ resource "aws_security_group" "sg" {
         description = "Allow ports from 80 to 8080"
     }
     ingress {
-        from_port = "3306"
-        to_port = "3306"
+        from_port = 3306
+        to_port = 3306
         protocol = "tcp"
         cidr_blocks = ["0.0.0.0/0"]
         description = "Allow SQL Traffic"
