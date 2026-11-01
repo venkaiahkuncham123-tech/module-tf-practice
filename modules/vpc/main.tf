@@ -5,7 +5,7 @@ locals {
     Created_On = formatdate("YYYY-MM-DD", timestamp())
   }
 }
-data "aws_availability_zone" "az" {
+data "aws_availability_zones" "az" {
     state = "available"    
   
 }
