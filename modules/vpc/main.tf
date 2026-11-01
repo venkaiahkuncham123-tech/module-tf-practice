@@ -60,10 +60,7 @@ resource "aws_subnet" "private_subnet" {
 }
 resource "aws_route_table" "pvt-rt" {
     vpc_id = aws_vpc.vpc.id
-    route {
-        cidr_block = "0.0.0.0/0"
-    }
-  
+    
 }
 resource "aws_route_table_association" "pvt-rt-assoc" {
   subnet_id = aws_subnet.private_subnet.id
