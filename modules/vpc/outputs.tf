@@ -24,9 +24,4 @@ output "public_az" {
   output "private_sg_id" {
     value = aws_security_group.pvt-sg.id    
   }
-  output "pub_subnet_name" {
-    value = data.aws_availability_zone.az.names[0]
-    }
-    output "private_subnet_name" {
-    value = data.aws_availability_zone.az.names[1]
-    }
+  
