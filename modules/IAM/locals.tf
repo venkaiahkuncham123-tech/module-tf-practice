@@ -1,3 +1,3 @@
-locals {
-  tags = formatdate()
-}
+  locals {
+  tags = formatdate("YYYY-MM-DD", timestamp())
+        }
