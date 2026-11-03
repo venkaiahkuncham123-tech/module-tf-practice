@@ -13,7 +13,7 @@ resource "aws_iam_group" "group" {
 resource "aws_iam_user_group_membership" "group_membership" {
     for_each = var.users_list
     groups = [aws_iam_group.group.name]
-    user = each.value.name
+    user = each.value
   
 }
 resource "aws_iam_group_policy_attachment" "policy" {
