@@ -10,11 +10,11 @@ resource "aws_iam_group" "group" {
     name = var.group_name
      
 }
-resource "aws_iam_group_membership" "group_membership" {
+resource "aws_iam_user_group_membership" "group_membership" {
     for_each = var.users_list
     name = var.group_membership_name
-    group = aws_iam_group.group.name
-    users = [each.value.name]
+    group = [aws_iam_group.group.name]
+    users = each.value.name
   
 }
 resource "aws_iam_group_policy_attachment" "policy" {
