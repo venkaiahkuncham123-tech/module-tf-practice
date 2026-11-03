@@ -1,4 +1,4 @@
 output "ids" {
-    value = aws_iam_user.user.id
-  
+    value = for ids in aws_iam_user.user : ids.id
+     
 }
